@@ -1,0 +1,53 @@
+.page-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-container{
+    border: 1px solid #2596be;
+    padding: 5px 10px;
+    width: 50px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    margin: 40px 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #2596be;
+}
+
+.non-page-container{
+    border: 1px solid #2596be;
+    padding: 5px 10px;
+    font-size: 16px;
+    width: 50px;
+    height: 40px;
+    font-weight: 600;
+    text-align: center;
+    margin: 40px 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #000;
+}
+
+.disabled-btn{
+    background-color: 1px solid grey;
+    padding: 5px 10px;
+    width: 50px;
+    font-size: 16px;
+    height: 40px;
+    font-weight: 600;
+    text-align: center;
+    margin: 40px 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: not-allowed;
+    color: grey;
+}

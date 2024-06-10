@@ -1,30 +1,38 @@
 import React, { useState, useEffect } from "react";
 import StarBorderPurple500Icon from "@mui/icons-material/StarBorderPurple500";
-import { data } from "../../utils/RestroData"
-
-import AddLocationAltTwoToneIcon from '@mui/icons-material/AddLocationAltTwoTone';
+import { data } from "../../utils/RestroData";
+import Page from "../Pagination/Page";
+import AddLocationAltTwoToneIcon from "@mui/icons-material/AddLocationAltTwoTone";
 import "./ResList.scss";
 
 const ResList = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 9;
 
   useEffect(() => {
-    getData()
-  }, [])
+    getData();
+  }, []);
 
   const getData = () => {
-    setListOfRestaurants(data)
-  }
+    setListOfRestaurants(data);
+  };
 
+  // Calculate the indices for the current page
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentRestaurants = listOfRestaurants.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Handle page change
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <>
       <div className="res-card-main">
-        {listOfRestaurants.map((res) => (
-          <div
-            className="res-card-div"
-            key={res.id}
-          >
+        {currentRestaurants.map((res) => (
+          <div className="res-card-div" key={res.id}>
             <div className="res-card">
               <img
                 src={res.RestaurantImg}
@@ -33,7 +41,9 @@ const ResList = () => {
               />
               <div className="top-div">
                 <div>
-                  <h3 className="res-name">{res.RestaurantName.slice(0, 25)}</h3>
+                  <h3 className="res-name">
+                    {res.RestaurantName.slice(0, 25)}
+                  </h3>
                 </div>
                 <div className="rating-div">
                   <p>
@@ -53,14 +63,23 @@ const ResList = () => {
                 </div>
               </div>
               <div className="place-div">
-                <p><AddLocationAltTwoToneIcon />{res.RestaurantPlace}</p>
+                <p>
+                  <AddLocationAltTwoToneIcon />
+                  {res.RestaurantPlace}
+                </p>
               </div>
             </div>
           </div>
         ))}
       </div>
+      <Page
+        itemsPerPage={itemsPerPage}
+        totalItems={listOfRestaurants.length}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </>
   );
 };
 
-export default ResList
+export default ResList;
