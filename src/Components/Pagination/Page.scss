@@ -6,13 +6,14 @@
 
 .page-container{
     border: 1px solid #2596be;
+    background-color: #fff;
     padding: 5px 10px;
     width: 50px;
     height: 40px;
     font-size: 16px;
     font-weight: 600;
     text-align: center;
-    margin: 40px 4px;
+    margin: 40px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,18 +23,19 @@
 
 .non-page-container{
     border: 1px solid #2596be;
+    background-color: #2596be;
     padding: 5px 10px;
     font-size: 16px;
     width: 50px;
     height: 40px;
     font-weight: 600;
     text-align: center;
-    margin: 40px 4px;
+    margin: 40px 0;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    color: #000;
+    color: #fff;
 }
 
 .disabled-btn{
@@ -44,7 +46,7 @@
     height: 40px;
     font-weight: 600;
     text-align: center;
-    margin: 40px 4px;
+    margin: 40px 0;
     display: flex;
     justify-content: center;
     align-items: center;

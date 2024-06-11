@@ -11,7 +11,7 @@ const Page = ({ itemsPerPage, totalItems, currentPage, onPageChange }) => {
   return (
     <div className="page-div">
       <button
-        className={currentPage === 1 ? 'disabled-btn' : 'page-container'} 
+        className={currentPage === 1 ? "disabled-btn" : "page-container"}
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
       >
@@ -21,13 +21,17 @@ const Page = ({ itemsPerPage, totalItems, currentPage, onPageChange }) => {
         <button
           key={number}
           onClick={() => onPageChange(number)}
-          className={currentPage === number ? "non-page-container" : "page-container"}
+          className={
+            currentPage === number ? "non-page-container" : "page-container"
+          }
         >
           {number}
         </button>
       ))}
       <button
-        className={currentPage === pageNumbers.length ? 'disabled-btn' : 'page-container'} 
+        className={
+          currentPage === pageNumbers.length ? "disabled-btn" : "page-container"
+        }
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === pageNumbers.length}
       >

@@ -3,6 +3,7 @@ import StarBorderPurple500Icon from "@mui/icons-material/StarBorderPurple500";
 import { data } from "../../utils/RestroData";
 import Page from "../Pagination/Page";
 import AddLocationAltTwoToneIcon from "@mui/icons-material/AddLocationAltTwoTone";
+import Footer from '../Footer/Footer'
 import "./ResList.scss";
 
 const ResList = () => {
@@ -78,6 +79,7 @@ const ResList = () => {
         currentPage={currentPage}
         onPageChange={handlePageChange}
       />
+      <Footer />
     </>
   );
 };
