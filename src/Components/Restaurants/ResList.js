@@ -9,7 +9,7 @@ import "./ResList.scss";
 const ResList = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 9;
+  const itemsPerPage = 6;
 
   useEffect(() => {
     getData();
