@@ -18,10 +18,10 @@ const Navbar = () => {
       </div>
       <div className="Nav-items">
         <ul>
-          <Link to="about" className="link">
+          {/* <Link to="about" className="link">
             <li>About</li>
-          </Link>
-          <li>Contact</li>
+          </Link> */}
+          {/* <li>Contact</li> */}
           <Link to="cart">
             <li>
               <ShoppingCartIcon />

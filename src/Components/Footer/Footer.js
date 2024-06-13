@@ -5,6 +5,9 @@ import gmail from '../../Assets/gmail.jpeg'
 import './Footer.scss'
 
 const Footer = () => {
+
+  const time = new Date().getFullYear()
+  
   return (
     <div className='footer-container'>
         <div className='social-links'>
@@ -12,7 +15,7 @@ const Footer = () => {
             <img src={twitter} alt="Twitter" className='twitter-icon'/>
             <img src={gmail} alt="Twitter" className='twitter-icon'/>
         </div>
-    <p>Made by me © 2024</p>
+    <p>Made by me © {time}</p>
     </div>
   )
 }

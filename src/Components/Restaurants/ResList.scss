@@ -1,124 +1,192 @@
 .res-card-main {
-    position: relative;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 70px;
+  padding-bottom: 3rem;
+  width: 80%;
+  margin: 0 auto;
+  overflow-x: hidden;
+  .res-card-div {
+    width: 360px;
+    height: 400px;
+
+    .res-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 2px;
+
+      &:hover {
+        border: 2.5px solid #d6d6d6;
+        border-radius: 15px;
+        box-shadow: 0px 0px 5px #2596be;
+        cursor: pointer;
+      }
+
+      .res-img {
+        width: 350px;
+        height: 250px;
+        border-radius: 15px;
+      }
+
+      .top-div {
+        width: 96%;
+        height: 55px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        color: #424242;
+        font-family: "Poppins", sans-serif;
+
+        .rating-div {
+          display: flex;
+
+          h3 {
+            font-size: 15px;
+            text-transform: capitalize;
+          }
+
+          p {
+            display: flex;
+            justify-content: center;
+            gap: 2px;
+            align-items: center;
+            background-color: rgb(38, 126, 62);
+            color: #fff;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 5px;
+          }
+
+          .res-star {
+            font-size: 18px;
+            font-weight: 700;
+          }
+        }
+      }
+
+      .center-div {
+        width: 96%;
+        height: 45px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .cousine-name {
+          font-size: 14px;
+          font-weight: 500;
+          color: #616161;
+          font-family: "Noto Sans", sans-serif;
+        }
+
+        .price-div > p {
+          font-size: 14px;
+          width: 90px;
+          font-weight: 500;
+          color: #616161;
+          font-family: "Noto Sans", sans-serif;
+        }
+      }
+      .place-div {
+        width: 98%;
+        p {
+          font-size: 14px;
+          font-weight: 700;
+          color: #2596be;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          font-family: "Poppins", sans-serif;
+        }
+      }
+    }
+  }
+
+  .pagination-controls {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.Modal-showDiv {
+  width: 500px;
+  overflow-y: scroll;
+  max-height: 550px;
+  position: fixed;
+  z-index: 999999999;
+  background-color: #f2f2f2;
+  left: 30%;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media (max-width: 1350px) {
+  .res-card-main {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 70px;
-    padding-bottom: 3rem;
-    width: 80%;
+    grid-template-columns: repeat(2, 1fr);
+    width: 90%;
     margin: 0 auto;
+    justify-items: center;
+    gap: 100px;
     .res-card-div {
-      width: 360px;
+      width: 460px;
       height: 400px;
-  
       .res-card {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
         padding: 2px;
-  
+
         &:hover {
           border: 2.5px solid #d6d6d6;
           border-radius: 15px;
           box-shadow: 0px 0px 5px #2596be;
           cursor: pointer;
         }
-  
         .res-img {
-          width: 350px;
-          height: 250px;
+          width: 450px;
+          height: 300px;
           border-radius: 15px;
-        }
-  
-        .top-div {
-          width: 96%;
-          height: 55px;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-          align-items: center;
-          color: #424242;
-          font-family: "Poppins", sans-serif;
-  
-          .rating-div {
-            display: flex;
-  
-            h3{
-              font-size: 15px;
-              text-transform: capitalize;
-            }
-  
-            p {
-              display: flex;
-              justify-content: center;
-              gap: 2px;
-              align-items: center;
-              background-color: rgb(38, 126, 62);
-              color: #fff;
-              font-weight: 600;
-              padding: 2px 6px;
-              border-radius: 5px;
-            }
-  
-            .res-star {
-              font-size: 18px;
-              font-weight: 700;
-            }
-          }
-        }
-  
-        .center-div {
-          width: 96%;
-          height: 45px;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-  
-          .cousine-name {
-            font-size: 14px;
-            font-weight: 500;
-            color: #616161;
-            font-family: "Noto Sans", sans-serif;
-          }
-  
-          .price-div > p {
-            font-size: 14px;
-            width: 90px;
-            font-weight: 500;
-            color: #616161;
-            font-family: "Noto Sans", sans-serif;
-          }
-        }
-        .place-div {
-          width: 98%;
-          p {
-            font-size: 14px;
-            font-weight: 700;
-            color: #2596be;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-family: "Poppins", sans-serif;
-          }
         }
       }
     }
-  
-    .pagination-controls {
-      display: flex;
-      justify-content: center;
+  }
+}
+
+@media(max-width: 1120px){
+  .res-card-main{
+    display: grid;
+    grid-template-columns: auto;
+    .res-card-div {
+      width: 430px;
+      height: 400px;
+      .res-img {
+        width: 420px;
+        height: 350px;
+        border-radius: 15px;
+      }
     }
   }
-  
-  .Modal-showDiv {
-    width: 500px;
-    overflow-y: scroll;
-    max-height: 550px;
-    position: fixed;
-    z-index: 999999999;
-    background-color: #f2f2f2;
-    left: 30%;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media(max-width: 420px){
+  .res-card-main{
+    display: grid;
+    grid-template-columns: auto;
+    justify-items: center;
+    width: 96%;
+    .res-card-div {
+      width: 360px;
+      height: 400px;
+      .res-img {
+        width: 350px!important;
+        height: 350px;
+        border-radius: 15px;
+      }
+    }
   }
-  
+}
