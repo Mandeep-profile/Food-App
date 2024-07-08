@@ -1,9 +1,19 @@
+.top-rated{
+  padding: 8px 16px;
+  margin: 20px 160px;
+  float: right;
+  background-color: #2596be;
+  color: #fff;
+  cursor: pointer;
+  border: 1px solid gray;
+  font-weight: 700;
+}
+
 .res-card-main {
   position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 70px;
-  padding-bottom: 3rem;
   width: 80%;
   margin: 0 auto;
   overflow-x: hidden;

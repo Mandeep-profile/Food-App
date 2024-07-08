@@ -6,10 +6,12 @@ import Footer from "../Footer/Footer";
 import { RestaurantData } from "../../utils/RestaurantAPI";
 import { useNavigate } from "react-router-dom";
 import "./ResList.scss";
+import Shimmer from "../Shimmer/Shimmer";
 
 const ResList = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true);
   const itemsPerPage = 9;
 
   const navigate = useNavigate();
@@ -19,12 +21,14 @@ const ResList = () => {
   }, []);
 
   const getData = async () => {
+    setLoading(true);
     try {
       const restaurantsData = await RestaurantData();
       const restaurants =
         restaurantsData?.data?.data?.cards?.[1]?.card?.card?.gridElements
           ?.infoWithStyle?.restaurants;
       setListOfRestaurants(restaurants);
+      setLoading(false)
       console.log(restaurants);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -46,14 +50,34 @@ const ResList = () => {
     navigate(`/restaurant-menu/${id}`);
   };
 
+  const handleTopRestaurant = () => {
+    const filteredRestaurant = listOfRestaurants.filter(
+      (res) => res?.info?.avgRatingString >= 4.2
+    );
+    setListOfRestaurants(filteredRestaurant);
+    console.log(filteredRestaurant);
+  };
+
   return (
     <>
-      <div className="res-card-main">
-        {currentRestaurants.map((res) => (
-          <div className="res-card-div" key={res?.info?.id} onClick={() => handleOpenRestaurantMenu(res?.info?.id)}>
+      <div>
+        <button className="top-rated" onClick={handleTopRestaurant}>
+          Top Rated Restaurant
+        </button>
+      </div>
+      {loading === true ? <Shimmer /> : <div className="res-card-main">
+        {currentRestaurants?.map((res) => (
+          <div
+            className="res-card-div"
+            key={res?.info?.id}
+            onClick={() => handleOpenRestaurantMenu(res?.info?.id)}
+          >
             <div className="res-card">
               <img
-                src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${res?.info?.cloudinaryImageId}`}
+                src={
+                  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+                  res?.info?.cloudinaryImageId
+                }
                 alt="RestaurantImg"
                 className="res-img"
               />
@@ -71,7 +95,7 @@ const ResList = () => {
               <div className="center-div">
                 <div>
                   <h3 className="cousine-name">
-                    {res?.info?.cuisines.join(", ").slice(0, 30)}...
+                    {res?.info?.cuisines.join(", ")?.slice(0, 30)}...
                   </h3>
                 </div>
                 <div className="price-div">
@@ -81,13 +105,13 @@ const ResList = () => {
               <div className="place-div">
                 <p>
                   <AddLocationAltTwoToneIcon />
-                  {res?.info?.areaName}
+                  {res?.info?.locality}
                 </p>
               </div>
             </div>
           </div>
         ))}
-      </div>
+      </div>}
       <Page
         itemsPerPage={itemsPerPage}
         totalItems={listOfRestaurants.length}
