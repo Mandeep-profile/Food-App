@@ -60,39 +60,44 @@ export const data = [
       RestaurantPlace: "South Extension 2 Market, New Delhi",
       Menu: [
         { 
-          Mid: 1,
-          ItemName: "Taekwondo Spring Roll",
-          ItemImg: "https://b.zmtcdn.com/data/dish_photos/b8e/b2354e4ae66f8debe26e5b7954f72b8e.jpg?fit=around|130:130&crop=130:130;*,*",
-          Price: "₹465",
-          description: "Rolled with mushroom, baby corn, beans served with green curry sauce."
+          Mid: 6,
+          ItemName: "Hariyali Paneer Tikka",
+          ItemImg: "https://b.zmtcdn.com/data/dish_photos/c95/5f785c13ebd56e23ba97a242e614ac95.jpeg?fit=around|130:130&crop=130:130;*,*",
+          type:"veg",
+          Price: "₹359",
+          description: "Cottage cheese marinated with yoghurt & Indian spices and flavoured with Green Chutney, cooked in clay oven."
         },
         {
-          Mid: 2,
-          ItemName: "Green Falafel Tahini",
-          ItemImg: "https://tse3.mm.bing.net/th?id=OIP.OQn4q2Z6p8DqkAnuJ9iSQQHaLG&pid=Api&P=0&h=180",
-          Price: "₹425",
-          description: "Chick peas, mint, parsley and coriander patty served with hummus."
+          Mid: 7,
+          ItemName: "Peri Peri Chaap",
+          ItemImg: "https://b.zmtcdn.com/data/dish_photos/90a/d3dd050c809377c345d08e1e6fb0690a.jpeg?fit=around|130:130&crop=130:130;*,*",
+          type:"veg",
+          Price: "₹345",
+          description: ""
         },
         {
-          Mid: 3,
-          ItemName: "Smokey Mushroom Galouti",
-          ItemImg: "https://tse2.mm.bing.net/th?id=OIP.V1ka6Ygh8jbaf7oSzbCcbgHaFz&pid=Api&P=0&h=180",
-          Price: "₹455",
-          description: "Tempered with yellow chili served with mint sauce"
+          Mid: 8,
+          ItemName: "Tandoori Paneer Tikka",
+          ItemImg: "https://b.zmtcdn.com/data/dish_photos/0ac/6ebab9872f4b40232f601b0a17e7a0ac.png?fit=around|130:130&crop=130:130;*,*",
+          type:"veg",
+          Price: "₹359",
+          description: "Cottage cheese marinated with yoghurt & Indian spices, cooked in clay oven"
         },
         {
-          Mid: 4,
-          ItemName: "Thai Veg Curry",
-          ItemImg: "https://tse2.mm.bing.net/th?id=OIP.tECKi-Bsv9pfvRr4MkJ0RgHaGm&pid=Api&P=0&h=180",
-          Price: "₹425",
-          description: "Cooked in traditional thai red curry served with steamed rice."
+          Mid: 9,
+          ItemName: "Saufiani Malai Paneer Tikka",
+          ItemImg: "https://b.zmtcdn.com/data/dish_photos/07e/edbe941c14602bd14fb66c703913907e.jpeg?fit=around|130:130&crop=130:130;*,*",
+          type:"veg",
+          Price: "₹379",
+          description: "Cottage cheese marinated with yoghurt, cream, cashew & Indian spices and flavoured with fennel, cooked in clay oven."
         },
         {
-          Mid: 5,
-          ItemName: "Mushroom Cappuccino Soup",
-          ItemImg: "https://tse4.mm.bing.net/th?id=OIP.4QcLEor6CnNKi3M0MWnrkQAAAA&pid=Api&P=0&h=180",
-          Price: "₹275",
-          description: "Served with mushroom ketchup spared bread."
+          Mid: 10,
+          ItemName: "Tandoori Soya Chaap",
+          ItemImg: "https://b.zmtcdn.com/data/dish_photos/c7b/fd7c5efa27d54b8269582e71e3796c7b.jpeg?fit=around|130:130&crop=130:130;*,*",
+          type:"veg",
+          Price: "₹349",
+          description: "Soybean chaap marinated with yoghurt & Indian spices, cooked in clay oven"
         }
       ]
     },
