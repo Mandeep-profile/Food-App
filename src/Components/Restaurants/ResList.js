@@ -28,8 +28,7 @@ const ResList = () => {
         restaurantsData?.data?.data?.cards?.[1]?.card?.card?.gridElements
           ?.infoWithStyle?.restaurants;
       setListOfRestaurants(restaurants);
-      setLoading(false)
-      console.log(restaurants);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -65,53 +64,57 @@ const ResList = () => {
           Top Rated Restaurant
         </button>
       </div>
-      {loading === true ? <Shimmer /> : <div className="res-card-main">
-        {currentRestaurants?.map((res) => (
-          <div
-            className="res-card-div"
-            key={res?.info?.id}
-            onClick={() => handleOpenRestaurantMenu(res?.info?.id)}
-          >
-            <div className="res-card">
-              <img
-                src={
-                  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-                  res?.info?.cloudinaryImageId
-                }
-                alt="RestaurantImg"
-                className="res-img"
-              />
-              <div className="top-div">
-                <div>
-                  <h3 className="res-name">{res?.info?.name}</h3>
+      {loading === true ? (
+        <Shimmer />
+      ) : (
+        <div className="res-card-main">
+          {currentRestaurants?.map((res) => (
+            <div
+              className="res-card-div"
+              key={res?.info?.id}
+              onClick={() => handleOpenRestaurantMenu(res?.info?.id)}
+            >
+              <div className="res-card">
+                <img
+                  src={
+                    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
+                    res?.info?.cloudinaryImageId
+                  }
+                  alt="RestaurantImg"
+                  className="res-img"
+                />
+                <div className="top-div">
+                  <div>
+                    <h3 className="res-name">{res?.info?.name}</h3>
+                  </div>
+                  <div className="rating-div">
+                    <p>
+                      {res?.info?.avgRatingString}
+                      <StarBorderPurple500Icon className="res-star" />
+                    </p>
+                  </div>
                 </div>
-                <div className="rating-div">
+                <div className="center-div">
+                  <div>
+                    <h3 className="cousine-name">
+                      {res?.info?.cuisines.join(", ")?.slice(0, 30)}...
+                    </h3>
+                  </div>
+                  <div className="price-div">
+                    <p>{res?.info?.costForTwo}</p>
+                  </div>
+                </div>
+                <div className="place-div">
                   <p>
-                    {res?.info?.avgRatingString}
-                    <StarBorderPurple500Icon className="res-star" />
+                    <AddLocationAltTwoToneIcon />
+                    {res?.info?.locality}
                   </p>
                 </div>
               </div>
-              <div className="center-div">
-                <div>
-                  <h3 className="cousine-name">
-                    {res?.info?.cuisines.join(", ")?.slice(0, 30)}...
-                  </h3>
-                </div>
-                <div className="price-div">
-                  <p>{res?.info?.costForTwo}</p>
-                </div>
-              </div>
-              <div className="place-div">
-                <p>
-                  <AddLocationAltTwoToneIcon />
-                  {res?.info?.locality}
-                </p>
-              </div>
             </div>
-          </div>
-        ))}
-      </div>}
+          ))}
+        </div>
+      )}
       <Page
         itemsPerPage={itemsPerPage}
         totalItems={listOfRestaurants.length}
