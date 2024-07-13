@@ -1,12 +1,15 @@
-import React, {useState} from "react";
+import { useState, useEffect } from "react";
 import { RestaurantData } from "../../utils/RestaurantAPI";
 
 const useRestaurantList = () => {
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const [listOfRestaurants, setListOfRestaurants] = useState([]);
-    const [loading, setLoading] = useState(true);
-  
-    const getData = async () => {
+  useEffect(() => {
+    getData();
+  },[]);
+
+  const getData = async () => {
     setLoading(true);
     try {
       const restaurantsData = await RestaurantData();
@@ -19,6 +22,7 @@ const useRestaurantList = () => {
       console.error("Error fetching data:", error);
     }
   };
+  return {listOfRestaurants, loading, setListOfRestaurants};
 };
 
 export default useRestaurantList;

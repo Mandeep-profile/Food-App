@@ -9,24 +9,36 @@
     align-items: center;
     cursor: pointer;
     .item-title {
-      font-weight: 700;
-      font-size: 14px;
+      font-weight: bold;
+      font-size: 15px;
     }
   }
   .menu-body {
     width: 50%;
     background-color: #f0f5f5;
-    margin: 0 auto;
+    margin: 10px auto;
     .menu-container {
       display: flex;
       justify-content: center;
       align-items: center;
       border-bottom: 1px solid #bec5c5;
+      padding: 10px 0;
       .menu-img {
         width: 25%;
         display: flex;
         justify-content: end;
         padding: 10px 20px;
+        .item-btn {
+          position: absolute;
+          margin: 100px 20px;
+          padding: 10px 40px;
+          border-radius: 5px;
+          border: none;
+          background-color: #000000;
+          color: #f0f5f5;
+          font-weight: 700;
+          cursor: pointer;
+        }
       }
       .menu-description {
         width: 75%;
@@ -39,10 +51,10 @@
         text-align: justify;
         width: 90%;
         font-size: 14px;
-        padding: 5px 20px;
+        padding: 10px 20px;
         margin-bottom: 10px;
       }
-      .item-price{
+      .item-price {
         font-weight: 700;
         font-size: 14px;
         margin-left: 20px;

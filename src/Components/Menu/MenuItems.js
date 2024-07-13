@@ -1,15 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
 import "./MenuItems.scss";
 
-const MenuItems = ({ data }) => {
-  const [showItems, setShowItems] = useState(false);
+const MenuItems = ({ data, showItems, setShowIndex }) => {
   const menuItems = data?.itemCards;
-  console.log(menuItems);
 
   const handleMenuItems = () => {
-    setShowItems(!showItems);
+    setShowIndex()
   };
 
   return (
@@ -35,6 +33,7 @@ const MenuItems = ({ data }) => {
                     alt="item-img"
                     className="item-img"
                   />
+                  <button className="item-btn">Add</button>
                 </div>
                 <div className="menu-description">
                   <h3 className="item-name">{item.card.info.name}</h3>

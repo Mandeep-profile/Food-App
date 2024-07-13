@@ -1,38 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import StarBorderPurple500Icon from "@mui/icons-material/StarBorderPurple500";
 import Page from "../Pagination/Page";
 import AddLocationAltTwoToneIcon from "@mui/icons-material/AddLocationAltTwoTone";
 import Footer from "../Footer/Footer";
-import { RestaurantData } from "../../utils/RestaurantAPI";
 import { useNavigate } from "react-router-dom";
-import "./ResList.scss";
+import "./Restaurants.scss";
 import Shimmer from "../Shimmer/Shimmer";
+import useRestaurantList from "./useRestaurantList";
 
-const ResList = () => {
-  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+const Restaurants = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const [loading, setLoading] = useState(true);
+  const {listOfRestaurants, loading, setListOfRestaurants} = useRestaurantList()
   const itemsPerPage = 9;
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  const getData = async () => {
-    setLoading(true);
-    try {
-      const restaurantsData = await RestaurantData();
-      const restaurants =
-        restaurantsData?.data?.data?.cards?.[1]?.card?.card?.gridElements
-          ?.infoWithStyle?.restaurants;
-      setListOfRestaurants(restaurants);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -54,7 +35,6 @@ const ResList = () => {
       (res) => res?.info?.avgRatingString >= 4.2
     );
     setListOfRestaurants(filteredRestaurant);
-    console.log(filteredRestaurant);
   };
 
   return (
@@ -126,4 +106,4 @@ const ResList = () => {
   );
 };
 
-export default ResList;
+export default Restaurants;

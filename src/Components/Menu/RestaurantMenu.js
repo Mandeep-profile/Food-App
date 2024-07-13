@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Veg from "../../Assets/vegetarian.png";
-import NonVeg from "../../Assets/non-vegetarian.png";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import { Menu } from "../../utils/RestaurantAPI";
 import Shimmer from "../Shimmer/Shimmer";
 import MenuItems from "./MenuItems";
+import { Menu } from "../../utils/RestaurantAPI";
 import { useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import "./RestaurantMenu.scss";
@@ -13,6 +9,7 @@ import "./RestaurantMenu.scss";
 const RestaurantMenu = () => {
   const [menuList, setMenuList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showIndex, setShowIndex] = useState(0);
   const { id } = useParams();
 
   const getMenuData = async () => {
@@ -43,15 +40,20 @@ const RestaurantMenu = () => {
         <Shimmer />
       ) : (
         <div className="menu-card">
-          <h2 className="restaurant-name"></h2>
+          {/* <h2 className="restaurant-name"></h2> */}
           <div className="menu-items">
-            {menuList?.map((category) => (
-              <MenuItems data={category?.card?.card} />
+            {menuList?.map((category, index) => (
+              <MenuItems
+                key={category?.card?.card?.title}
+                data={category?.card?.card}
+                showItems={index === showIndex ? true : false}
+                setShowIndex={() => setShowIndex(index)}
+              />
             ))}
           </div>
         </div>
       )}
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
