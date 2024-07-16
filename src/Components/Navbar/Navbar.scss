@@ -19,6 +19,10 @@
           margin-right: 50px;
           list-style: none;
           cursor: pointer;
+          .cart-items{
+            position: absolute;
+            top: 20px;
+          }
         }
   
         .link {

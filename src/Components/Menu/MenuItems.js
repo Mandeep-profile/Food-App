@@ -1,28 +1,33 @@
 import React from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import { useDispatch } from "react-redux";
+import { addItems } from "../../ReduxToolKit/cartSlice";
 import "./MenuItems.scss";
 
 const MenuItems = ({ data, showItems, setShowIndex }) => {
   const menuItems = data?.itemCards;
 
+  const dispatch = useDispatch()
+
   const handleMenuItems = () => {
-    setShowIndex()
+    setShowIndex();
   };
 
   return (
     <div className="menu-main-container" onClick={handleMenuItems}>
       <div className="menu-header">
-        <span className="item-title">{data.title} ({menuItems.length})</span>
+        <span className="item-title">
+          {data.title} ({menuItems.length})
+        </span>
         <span className="item-arrow">
-          {!showItems ? (<ArrowDropDownIcon />) :
-          (<ArrowDropUpIcon />)}
+          {!showItems ? <ArrowDropDownIcon /> : <ArrowDropUpIcon />}
         </span>
       </div>
       {showItems && (
         <div className="menu-body">
           {menuItems.map((item) => {
-            return ( 
+            return (
               <div className="menu-container">
                 <div className="menu-img">
                   <img
@@ -33,7 +38,9 @@ const MenuItems = ({ data, showItems, setShowIndex }) => {
                     alt="item-img"
                     className="item-img"
                   />
-                  <button className="item-btn">Add</button>
+                  <button className="item-btn" onClick={() => dispatch(addItems())}>
+                    Add
+                  </button>
                 </div>
                 <div className="menu-description">
                   <h3 className="item-name">{item.card.info.name}</h3>
