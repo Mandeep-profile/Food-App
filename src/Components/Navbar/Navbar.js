@@ -8,7 +8,6 @@ import "./Navbar.scss";
 const Navbar = () => {
 
   const cartItems = useSelector((store) => store.cart.items)
-  console.log(cartItems);
 
   return (
     <div className="Nav-main">

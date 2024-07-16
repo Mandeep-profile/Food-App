@@ -38,7 +38,7 @@ const MenuItems = ({ data, showItems, setShowIndex }) => {
                     alt="item-img"
                     className="item-img"
                   />
-                  <button className="item-btn" onClick={() => dispatch(addItems())}>
+                  <button className="item-btn" onClick={() => dispatch(addItems(item))}>
                     Add
                   </button>
                 </div>
