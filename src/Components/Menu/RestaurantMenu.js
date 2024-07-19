@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Shimmer from "../Shimmer/Shimmer";
 import MenuItems from "./MenuItems";
+import useRestaurantList from "../Restaurants/useRestaurantList";
 import { Menu } from "../../utils/RestaurantAPI";
 import { useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
@@ -11,6 +12,8 @@ const RestaurantMenu = () => {
   const [loading, setLoading] = useState(true);
   const [showIndex, setShowIndex] = useState(0);
   const { id } = useParams();
+  const { listOfRestaurants } = useRestaurantList(id);
+  console.log(listOfRestaurants);
 
   const getMenuData = async () => {
     setLoading(true);
@@ -24,7 +27,6 @@ const RestaurantMenu = () => {
           "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
       );
       setMenuList(categoryItems);
-      console.log(categoryItems)
       setLoading(false);
     } catch (error) {
       console.log("Error While Fetching Data", error);
@@ -33,7 +35,11 @@ const RestaurantMenu = () => {
 
   useEffect(() => {
     getMenuData();
-  }, [id]);
+  }, []);
+
+  const getRestaurantId = listOfRestaurants.find(
+    (resId) => resId.info.id === id
+  );
 
   return (
     <>
@@ -41,7 +47,7 @@ const RestaurantMenu = () => {
         <Shimmer />
       ) : (
         <div className="menu-card">
-          {/* <h2 className="restaurant-name"></h2> */}
+          <h2 className="restaurant-name">{getRestaurantId?.info?.name}</h2>
           <div className="menu-items">
             {menuList?.map((category, index) => (
               <MenuItems

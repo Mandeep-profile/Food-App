@@ -58,7 +58,7 @@ const Cart = () => {
           <div className="cart-total">
             <span>TO PAY</span>
             <button className="pay-btn" onClick={handlePaymentOption}>
-              Pay <span className="pay-amount">₹ {totalPrice}</span>
+              Pay <span className="pay-amount">₹ {totalPrice.toFixed(2)}</span>
             </button>
           </div>
           <button className="clear-btn" onClick={() => dispatch(clearCart())}>
@@ -66,7 +66,7 @@ const Cart = () => {
           </button>
         </div>
       ) : (
-        <p>Your cart is empty</p>
+        <p className="empty-cart">Your cart is empty</p>
       )}
     </div>
   );
