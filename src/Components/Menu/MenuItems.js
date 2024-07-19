@@ -1,17 +1,33 @@
 import React from "react";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
-import { useDispatch } from "react-redux";
-import { addItems } from "../../ReduxToolKit/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addItems, removeItem } from "../../ReduxToolKit/cartSlice";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import "./MenuItems.scss";
 
 const MenuItems = ({ data, showItems, setShowIndex }) => {
   const menuItems = data?.itemCards;
 
-  const dispatch = useDispatch()
+  const cartItems = useSelector((store) => store.cart.items);
+  const dispatch = useDispatch();
 
   const handleMenuItems = () => {
     setShowIndex();
+  };
+
+  const handleAddItems = (item) => {
+    dispatch(addItems(item));
+  };
+
+  const handleRemoveItems = (item) => {
+    dispatch(removeItem(item))
+  }
+
+  const getItemCount = (itemId) => {
+    const item = cartItems.find((cartItem) => cartItem.card.info.id === itemId);
+    return item ? item.quantity : 0;
   };
 
   return (
@@ -27,8 +43,9 @@ const MenuItems = ({ data, showItems, setShowIndex }) => {
       {showItems && (
         <div className="menu-body">
           {menuItems.map((item) => {
+            const itemCount = getItemCount(item.card.info.id);
             return (
-              <div className="menu-container">
+              <div className="menu-container" key={item.card.info.id}>
                 <div className="menu-img">
                   <img
                     src={
@@ -38,9 +55,26 @@ const MenuItems = ({ data, showItems, setShowIndex }) => {
                     alt="item-img"
                     className="item-img"
                   />
-                  <button className="item-btn" onClick={() => dispatch(addItems(item))}>
+                  {itemCount === 0 ? (
+                  <button
+                    className="item-btn"
+                    onClick={() => handleAddItems(item)}
+                  >
                     Add
                   </button>
+                ) : (
+                  <div className="btn">
+                    <RemoveIcon
+                      className="minus-btn"
+                      onClick={() => handleRemoveItems(item)}
+                    />
+                    <div className="ItemsNumber">{itemCount}</div>
+                    <AddIcon
+                      className="add-btn"
+                      onClick={() => handleAddItems(item)}
+                    />
+                  </div>
+                )}
                 </div>
                 <div className="menu-description">
                   <h3 className="item-name">{item.card.info.name}</h3>

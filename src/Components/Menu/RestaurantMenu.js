@@ -24,6 +24,7 @@ const RestaurantMenu = () => {
           "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
       );
       setMenuList(categoryItems);
+      console.log(categoryItems)
       setLoading(false);
     } catch (error) {
       console.log("Error While Fetching Data", error);
@@ -32,7 +33,7 @@ const RestaurantMenu = () => {
 
   useEffect(() => {
     getMenuData();
-  }, []);
+  }, [id]);
 
   return (
     <>
