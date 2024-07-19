@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../../ReduxToolKit/cartSlice";
+import swal from "sweetalert2";
 import "./Cart.scss";
 
 const Cart = () => {
@@ -13,7 +14,28 @@ const Cart = () => {
     return total + item.quantity * price;
   }, 0);
 
-  console.log(totalPrice);
+  const handlePaymentOption = () => {
+    swal
+      .fire({
+        title: "Confirm Payment",
+        text: `Do you want to proceed ?`,
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonColor: "#2596be",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Proceed",
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          dispatch(clearCart());
+          swal.fire(
+            "Payment Successful",
+            "Your Order has been Placed successfully.",
+            "success"
+          );
+        }
+      });
+  };
 
   return (
     <div className="cart-container">
@@ -35,7 +57,7 @@ const Cart = () => {
         <div className="cart-footer">
           <div className="cart-total">
             <span>TO PAY</span>
-            <button className="pay-btn">
+            <button className="pay-btn" onClick={handlePaymentOption}>
               Pay <span className="pay-amount">₹ {totalPrice}</span>
             </button>
           </div>
